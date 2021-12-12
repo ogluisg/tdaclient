@@ -40,6 +40,7 @@ exports.getPriceHistory = void 0;
 var client_1 = require("../connection/client");
 var connect_1 = require("../models/connect");
 var routes_config_1 = require("../connection/routes.config");
+var utility_1 = require("../utils/utility");
 function getPriceHistory(config) {
     return __awaiter(this, void 0, void 0, function () {
         var symbol, url, response;
@@ -48,19 +49,7 @@ function getPriceHistory(config) {
                 case 0:
                     symbol = config.symbol;
                     url = (0, routes_config_1.PRICE_HISTORY)(symbol);
-                    Object.entries(config).map(function (entry, index, entries) {
-                        var param = entry[0], value = entry[1];
-                        if (index === 0) {
-                            url += '?';
-                        }
-                        if (param !== 'symbol') {
-                            var str = "".concat(param, "=").concat(value);
-                            if (entries.length - 1 !== index) {
-                                str += '&';
-                            }
-                            url += str;
-                        }
-                    });
+                    url = (0, utility_1.buildQuery)(url, config);
                     return [4 /*yield*/, client_1["default"].get({
                             url: url,
                             responseType: connect_1.ResponseType.JSON,

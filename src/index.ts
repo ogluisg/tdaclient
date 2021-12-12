@@ -1,5 +1,6 @@
 import { TdaClient } from './connection/tdaClient';
-import { Frequency, FrequencyType, Period, PeriodType } from './models/priceHisory';
+import { Month } from './models/optionChain';
+import { Frequency, FrequencyType, Period, PeriodType } from './models/priceHistory';
 
 const credentials = require('../credentials.json');
 
@@ -18,6 +19,13 @@ const main = async () => {
     frequency: Frequency.ONE,
   });
   console.log(data, 'data');
+  await tdaClient.getOptionChain({
+    symbol: 'TSLA',
+    strikeCount: 10,
+    includeQuotes: true,
+    interval: 1,
+    expMonth: Month.DEC,
+  });
 };
 
 main();

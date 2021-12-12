@@ -1,13 +1,15 @@
 import { Interceptor } from './interceptor';
 import client from './client';
 import { getAccount } from '../api/accounts';
-import { PriceHistoryConfig } from '../models/priceHisory';
+import { PriceHistoryConfig } from '../models/priceHistory';
+import { getOptionChain } from '../api/OptionChains';
 import { getPriceHistory } from '../api/priceHistory';
 import { CredentialProvider } from '../providers/credentialsProvider';
 import { TdaClientBuilder } from './TdaClientBuilder';
 import { placeOrder } from '../api/orders';
 import { OrdersConfig, PlaceOrdersResponse } from '../models/order';
 import { AuthorizationTokenInterceptor } from './authorizationTokenInterceptor';
+import { OptionChainConfig } from '../models/optionChain';
 
 export interface TdaClientConfig {
   authorizationInterceptor: Interceptor;
@@ -42,5 +44,9 @@ export class TdaClient {
 
   async getPriceHistory(config: PriceHistoryConfig): Promise<any> {
     return await getPriceHistory(config);
+  }
+
+  async getOptionChain(config: OptionChainConfig): Promise<any> {
+    return await getOptionChain(config);
   }
 }

@@ -36,31 +36,30 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var tdaClient_1 = require("./connection/tdaClient");
-var priceHistory_1 = require("./models/priceHistory");
-var credentials = require('../credentials.json');
-var tdaClient = tdaClient_1.TdaClient.from({
-    access_token: credentials.access_token,
-    client_id: credentials.client_id,
-    refresh_token: credentials.refresh_token
-});
-var main = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var data;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, tdaClient.getPriceHistory({
-                    symbol: 'TSLA',
-                    periodType: priceHistory_1.PeriodType.DAY,
-                    period: priceHistory_1.Period.ONE,
-                    frequencyType: priceHistory_1.FrequencyType.MINUTE,
-                    frequency: priceHistory_1.Frequency.ONE
-                })];
-            case 1:
-                data = _a.sent();
-                // console.log(data, 'data');
-                console.log(tdaClient.getOptionChain);
-                return [2 /*return*/];
-        }
+exports.getOptionChain = void 0;
+var client_1 = require("../connection/client");
+var routes_config_1 = require("../connection/routes.config");
+var connect_1 = require("../models/connect");
+var utility_1 = require("../utils/utility");
+function getOptionChain(config) {
+    return __awaiter(this, void 0, void 0, function () {
+        var url, response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    url = routes_config_1.OPTION_CHAIN;
+                    url = (0, utility_1.buildQuery)(url, config);
+                    console.log(url, 'url');
+                    return [4 /*yield*/, client_1["default"].get({
+                            url: url,
+                            responseType: connect_1.ResponseType.JSON,
+                            arrayFormat: connect_1.ArrayFormatType.COMMA
+                        })];
+                case 1:
+                    response = _a.sent();
+                    return [2 /*return*/, response.data];
+            }
+        });
     });
-}); };
-main();
+}
+exports.getOptionChain = getOptionChain;

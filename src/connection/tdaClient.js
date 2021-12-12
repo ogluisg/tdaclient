@@ -39,6 +39,7 @@ exports.__esModule = true;
 exports.TdaClient = void 0;
 var client_1 = require("./client");
 var accounts_1 = require("../api/accounts");
+var OptionChains_1 = require("../api/OptionChains");
 var priceHistory_1 = require("../api/priceHistory");
 var TdaClientBuilder_1 = require("./TdaClientBuilder");
 var orders_1 = require("../api/orders");
@@ -75,6 +76,16 @@ var TdaClient = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, (0, priceHistory_1.getPriceHistory)(config)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    TdaClient.prototype.getOptionChain = function (config) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, (0, OptionChains_1.getOptionChain)(config)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
