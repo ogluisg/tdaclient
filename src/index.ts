@@ -1,4 +1,5 @@
 import { TdaClient } from './connection/tdaClient';
+import { Frequency, FrequencyType, Period, PeriodType } from './models/priceHisory';
 
 const credentials = require('../credentials.json');
 
@@ -10,13 +11,13 @@ const tdaClient = TdaClient.from({
 
 const main = async () => {
   const data = await tdaClient.getPriceHistory({
-    symbol: 'tsla',
-    periodType: 'minute',
-    period: 10,
-    frequencyType: 'day',
-    frequency: 1,
-    needExtendedHoursData: false,
+    symbol: 'TSLA',
+    periodType: PeriodType.DAY,
+    period: Period.ONE,
+    frequencyType: FrequencyType.MINUTE,
+    frequency: Frequency.ONE,
   });
+  console.log(data, 'data');
 };
 
 main();

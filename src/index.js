@@ -37,6 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var tdaClient_1 = require("./connection/tdaClient");
+var priceHisory_1 = require("./models/priceHisory");
 var credentials = require('../credentials.json');
 var tdaClient = tdaClient_1.TdaClient.from({
     access_token: credentials.access_token,
@@ -48,12 +49,11 @@ var main = function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, tdaClient.getPriceHistory({
-                    symbol: 'tsla',
-                    periodType: 'minute',
-                    period: 10,
-                    frequencyType: 'day',
-                    frequency: 1,
-                    needExtendedHoursData: false
+                    symbol: 'TSLA',
+                    periodType: priceHisory_1.PeriodType.DAY,
+                    period: priceHisory_1.Period.ONE,
+                    frequencyType: priceHisory_1.FrequencyType.MINUTE,
+                    frequency: priceHisory_1.Frequency.ONE
                 })];
             case 1:
                 data = _a.sent();

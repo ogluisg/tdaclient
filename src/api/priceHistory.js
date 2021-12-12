@@ -61,7 +61,6 @@ function getPriceHistory(config) {
                             url += str;
                         }
                     });
-                    console.log(url, 'url');
                     return [4 /*yield*/, client_1["default"].get({
                             url: url,
                             responseType: connect_1.ResponseType.JSON,
