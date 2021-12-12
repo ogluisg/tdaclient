@@ -1,6 +1,8 @@
 import { Interceptor } from './interceptor';
 import client from './client';
 import { getAccount } from '../api/accounts';
+import { PriceHistoryConfig } from '../models/priceHisory';
+import { getPriceHistory } from '../api/priceHistory';
 import { CredentialProvider } from '../providers/credentialsProvider';
 import { TdaClientBuilder } from './TdaClientBuilder';
 import { placeOrder } from '../api/orders';
@@ -36,5 +38,9 @@ export class TdaClient {
 
   async placeOrder(config: OrdersConfig): Promise<PlaceOrdersResponse> {
     return await placeOrder(config);
+  }
+
+  async getPriceHistory(config: PriceHistoryConfig): Promise<any> {
+    return await getPriceHistory(config);
   }
 }

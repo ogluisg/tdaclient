@@ -5,9 +5,11 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "start": "tsc ./src/index.ts && node ./src/index.js",
     "test": "jest --silent --detectOpenHandles --coverage --runInBand",
     "test-dev": "jest --watch --silent --detectOpenHandles --coverage",
     "build": "tsc",
+    "gen:auth": "node generateAuthUrl.js",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
