@@ -7,6 +7,7 @@ const ROUTES = {
     orders: '/v1/orders',
     priceHistory: (symbol) => `/v1/marketdata/${symbol}/pricehistory`,
     optionChain: 'v1/marketdata/chains/',
+    quotes: '/v1/marketdata/quotes',
   },
 };
 
@@ -16,3 +17,4 @@ export const OAUTH2_TOKEN = `${ROUTES.hostname}${ROUTES.endpoints.oauth2Token}`;
 export const ORDERS = `${ROUTES.hostname}${ROUTES.endpoints.orders}`;
 export const PRICE_HISTORY = (symbol) => `${ROUTES.hostname}${ROUTES.endpoints.priceHistory(symbol)}`;
 export const OPTION_CHAIN = `${ROUTES.hostname}${ROUTES.endpoints.optionChain}`;
+export const QUOTES = `${ROUTES.hostname}${ROUTES.endpoints.quotes}`;
