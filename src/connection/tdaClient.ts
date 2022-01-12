@@ -5,8 +5,8 @@ import { getPriceHistory } from '../api/priceHistory';
 import { getAccount } from '../api/accounts';
 import { CredentialProvider } from '../providers/credentialsProvider';
 import { TdaClientBuilder } from './tdaClientBuilder';
-import { placeOrder } from '../api/orders';
-import { OrdersConfig, PlaceOrdersResponse } from '../models/order';
+import { cancelOrder, placeOrder } from '../api/orders';
+import { CancelOrderConfig, OrdersConfig, PlaceOrdersResponse } from '../models/order';
 import { AuthorizationTokenInterceptor } from './authorizationTokenInterceptor';
 import { OptionChainConfig, OptionChainResponse } from '../models/optionChain';
 import { getOptionChain } from '../api/optionChain';
@@ -54,5 +54,9 @@ export class TdaClient {
 
   async getQuotes(config: QuotesConfig): Promise<(QuotesIndex | QuotesEtf)[]> {
     return await getQuotes(config);
+  }
+
+  async cancelOrder(config: CancelOrderConfig): Promise<any> {
+    return await cancelOrder(config);
   }
 }
