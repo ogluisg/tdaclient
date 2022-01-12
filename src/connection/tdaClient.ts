@@ -12,6 +12,7 @@ import { OptionChainConfig, OptionChainResponse } from '../models/optionChain';
 import { getOptionChain } from '../api/optionChain';
 import { QuotesConfig, QuotesEtf, QuotesIndex } from '../models/quotes';
 import { getQuotes } from '../api/quotes';
+import {SecuritiesAccount} from "../models/accounts";
 
 export interface TdaClientConfig {
   authorizationInterceptor: Interceptor;
@@ -36,7 +37,7 @@ export class TdaClient {
     return new TdaClientBuilder(config).build();
   }
 
-  async getAccount(): Promise<any> {
+  async getAccount(): Promise<SecuritiesAccount[]> {
     return await getAccount();
   }
 
