@@ -6,7 +6,7 @@ const ROUTES = {
     accounts: '/v1/accounts',
     orders: '/v1/orders',
     priceHistory: (symbol) => `/v1/marketdata/${symbol}/pricehistory`,
-    optionChain: 'v1/marketdata/chains/',
+    optionChain: '/v1/marketdata/chains',
     quotes: '/v1/marketdata/quotes',
   },
 };
